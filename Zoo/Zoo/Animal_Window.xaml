@@ -1,0 +1,61 @@
+﻿<Window x:Class="Zoo.Animal_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zoo"
+        mc:Ignorable="d"
+        Title="Animal_Window" Height="500" Width="670">
+    <Window.Resources>
+
+        <DataTemplate x:Key="listTemplate">
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"  >
+                    <TextBlock FontSize="16" Text="{Binding Path=KindOfAnimal,StringFormat=Вид: {0}}"  />
+                    <TextBlock FontSize="16" Text="{Binding Path=Number,StringFormat=Количество: {0}}"  />
+                    <TextBlock FontSize="16" Text="{Binding Path=AviaryNum,StringFormat=Вольер №{0}}"  />
+                    <TextBlock FontSize="16" Text="{Binding Path=KeeperID,StringFormat=IDКипера: {0}}"  />
+                </StackPanel>
+                <Image  Grid.Column="1" Width="100" Source="{Binding Path=ImagePath}"  Margin="60,0,0,0" ></Image>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" >
+            <MenuItem Height="35" Width="30" ></MenuItem>
+        </Menu>
+
+        <ListBox  Grid.Row="1" x:Name="AnimalList" ItemTemplate="{StaticResource listTemplate}"
+             SelectionChanged="phonesList_SelectionChanged"   />
+        <Image Grid.Row="1" Height="200" Margin="0,0,0,233" Grid.Column="1" x:Name="select_img" />
+        <StackPanel Grid.Column="1" Grid.Row="1"  Margin="100,210,0,0">
+            <TextBox  Width="200" Height="25" x:Name="KindText" Margin="10"  />
+            <TextBox  Width="200" Height="25"  x:Name="NumberText" Margin="10"/>
+            <TextBox  Width="200" Height="25"  x:Name="AviaryText" Margin="10"   />
+            <TextBox  Width="200" Height="25"  x:Name="KeeperText" Margin="10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,210,221,45" Grid.Column="1">
+            <Label Content="Вид"    Width="86" Margin="10"/>
+            <Label Content="Количество" Grid.Column="1"  Width="86" Margin="10"/>
+            <Label Content="Вольер №" Grid.Column="1"  Width="86" Margin="10"/>
+            <Label Content="IDКипера" Grid.Column="1"   Width="86" Margin="10"/>
+        </StackPanel>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="62,403,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Height="30"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="201,403,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="30" RenderTransformOrigin="0.174,0.05"/>
+
+    </Grid>
+</Window>
